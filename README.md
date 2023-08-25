@@ -5,33 +5,33 @@ Installation
 
     Cloner le dépôt vers votre machine locale :
 
-bash
+
 
 git clone "https://github.com/melissa98m/Gestion-fux-visit"
 cd Gestion-fux-visit
 
     Installer les dépendances du projet via Composer :
 
-bash
+
 
 composer install
 
     Copier le fichier .env.example en .env et configurer votre base de données.
 
-bash
+
 
 cp .env.example .env
 php artisan key:generate
 
     Exécuter les migrations pour créer les tables de base de données :
 
-bash
+
 
 php artisan migrate
 
     Exécuter le serveur de développement :
 
-bash
+
 
 php artisan serve
 
