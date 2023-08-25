@@ -1,0 +1,58 @@
+Modélisation de la Base de Données :
+
+Entité : Visiteur
+
+    ID (Clé primaire, entier)
+    Prénom (Varchar(50))
+    Nom (Varchar(50))
+    Adresse (Texte)
+    Numéro de téléphone (Varchar(15))
+    Adresse e-mail (Varchar(100))
+    Entreprise (Clé étrangère, entier)
+
+
+Entité : Entreprise
+
+    ID (Clé primaire, entier)
+    Nom de l'entreprise (Varchar(100))
+    Adresse (Texte)
+    Numéro de téléphone (Varchar(15))
+    Adresse e-mail du contact (Varchar(100))
+
+Entité : Visite
+
+    ID (Clé primaire, entier)
+    ID du visiteur (Clé étrangère référençant l'entité Visiteur)
+    ID du status (Clé étrangère référençant l'entité Status)
+    Date et heure de début (Datetime)
+    Date et heure de fin (Datetime)
+    Objectif de la visite (Texte)
+    Commentaires (Texte)
+
+Entité : Statut
+
+    ID (Clé primaire, entier)
+    Nom du statut (Varchar(50))
+
+Entité: Utilisateur
+
+    ID (Clé primaire , entier)
+    Nom (Varchar(50))
+    Adresse e-mail (Varchar(100))
+    Mot de passe (Varchar(255))
+
+
+Dictionnaire de Données :
+
+    ID : Identifiant unique pour chaque enregistrement.
+    Prénom : Prénom du visiteur .
+    Nom : Nom de famille du visiteur.
+    Adresse : Adresse du visiteur ou de l'entreprise.
+    Numéro de téléphone : Numéro de téléphone du visiteur de l'entreprise.
+    Adresse e-mail : Adresse e-mail du visiteur , de l'utilisateur ou de l'entreprise.
+    Date et heure de début : Date et heure de début de la visite.
+    Date et heure de fin : Date et heure de fin de la visite.
+    Objectif de la visite : But ou raison de la visite.
+    Commentaires : Commentaires ou notes supplémentaires sur la visite.
+    Statut de la visite : État actuel de la visite (en cours, terminée, annulée, etc.).
+    Mot de passe : Mot de passe de l'utilisateur
