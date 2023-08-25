@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\CompanyController;
-
+use App\Http\Controllers\API\StatusController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -25,4 +25,11 @@ Route::controller(CompanyController::class)->group(function () {
     Route::post('companies', 'store');
     Route::patch('companies/{company}', 'update');
     Route::delete('companies/{compay}', 'destroy');
+});
+Route::controller(StatusController::class)->group(function () {
+    Route::get('status', 'index');
+    Route::get('status/{status}', 'show');
+    Route::post('status', 'store');
+    Route::patch('status/{statut}', 'update');
+    Route::delete('status/{statut}', 'destroy');
 });
