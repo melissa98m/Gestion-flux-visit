@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('visits', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('visit_start');
-            $table->dateTime('visit_end');
+            $table->timestamp('visit_start');
+            $table->timestamp('visit_end');
             $table->longText('visit_purpose');
             $table->longText('visit_comment');
             $table->bigInteger('visitor_id')->unsigned();

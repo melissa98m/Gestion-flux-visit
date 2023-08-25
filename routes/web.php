@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\StatusController;
 use Faker\Provider\de_CH\Company;
 use Illuminate\Support\Facades\Route;
 
@@ -32,5 +33,6 @@ Route::middleware('auth')->group(function () {
 
 // routes pour les entreprises
 Route::resource('companies', CompanyController::class)->middleware(['auth', 'verified']);
-
+//routes pour les statut
+Route::resource('status', StatusController::class)->middleware(['auth', 'verified']);
 require __DIR__.'/auth.php';
