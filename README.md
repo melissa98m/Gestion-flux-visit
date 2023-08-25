@@ -1,66 +1,167 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Test gestion de flux visiteurs
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Ce projet Laravel est conçu pour démontrer la mise en place d'un CRUD (Create, Read, Update, Delete) ainsi que la création d'une API pour interagir avec les données. Le projet utilise le framework Laravel pour la création d'une application web avec des fonctionnalités CRUD et une API pour accéder à ces fonctionnalités.
+Installation
 
-## About Laravel
+    Cloner le dépôt vers votre machine locale :
+    git clone "https://github.com/melissa98m/Gestion-fux-visit"
+    cd Gestion-fux-visit
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+    Installer les dépendances du projet via Composer :
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+composer install
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+    Copier le fichier .env.example en .env et configurer votre base de données.
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
 
-## Contributing
+cp .env.example .env
+php artisan key:generate
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    Exécuter les migrations pour créer les tables de base de données :
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+php artisan migrate
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    Exécuter le serveur de développement :
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+php artisan serve
+
+Fonctionnalités
+
+    CRUD complet pour la gestion des visites :
+        Création, lecture, mise à jour et suppression d'entreprises.
+    
+    CRUD complet pour la gestion des entreprises et visiteurs :
+        Création, lecture, mise à jour et suppression.
+
+    CRUD complet pour la gestion des statuts des visites :
+        Création, lecture, mise à jour et suppression.
+
+L'authentification des utilisateurs pour la gestion du CRUD est gérée par Laravel Breeze, qui fournit un système d'authentification simple et minimaliste. Vous pouvez vous connecter, vous inscrire et vous déconnecter pour accéder aux fonctionnalités CRUD.
+
+Documentation de l'API
+
+Cette API permet d'accéder aux informations des entreprises , visites, visiteurs et statuts de visite en utilisant des points d'extrémité RESTful. Voici comment vous pouvez interagir avec l'API :
+Obtenir la liste des visites
+
+    GET /api/visits
+
+Cette requête renverra la liste de toutes les visits enregistrées dans le système, avec leurs informations associées. Voici un exemple de réponse JSON :
+
+    json
+    
+    "status": "Success",
+        "data": [
+            {
+                "id": 1,
+                "visit_start": "2023-08-25 14:23:44",
+                "visit_end": "2023-08-26 14:23:44",
+                "visit_purpose": "test",
+                "visit_comment": "",
+                "visitor_id": 1,
+                "status_id": 1,
+                "created_at": null,
+                "updated_at": null
+            }
+        ]
+
+Obtenir les détails d'une visits
+
+
+    GET /api/visits/{id}
+
+Cette requête renverra les détails de la visite avec l'ID spécifié dans le chemin. Par exemple, pour obtenir les détails de la visite avec l'ID 1 :
+
+
+    GET /api/visits/1
+
+Créer une nouvelle visite
+
+    POST /api/visits
+
+Pour créer une nouvelle visite, envoyez une requête POST avec les données de la visite au format JSON dans le corps de la requête. Voici un exemple de corps de requête :
+
+    json
+    
+    {
+        "visit_start": "2023-08-25 14:23:44",
+        "visit_end": "2023-08-26 14:23:44",
+        "visit_purpose": "test",
+        "visit_comment": "",
+        "visitor_id": 1,
+        "status_id": 1,
+    }
+
+Mettre à jour les informations d'une visite
+
+
+    PUT /api/visits/{id}
+
+Pour mettre à jour les informations d'une visite, envoyez une requête PUT avec les données mises à jour au format JSON dans le corps de la requête. Par exemple, pour mettre à jour la visite avec l'ID 1 :
+
+
+    PUT /api/visits/1
+
+    json
+    
+    {
+            "visit_start": "2023-08-25 14:23:44",
+            "visit_end": "2023-08-26 14:23:44",
+            "visit_purpose": "Modifier",
+            "visit_comment": "",
+            "visitor_id": 1,
+            "status_id": 1,
+    }
+
+Supprimer une visite
+
+
+
+    DELETE /api/visits/{id}
+
+Pour supprimer une visite, envoyez une requête DELETE avec l'ID de la viste à supprimer dans le chemin. Par exemple, pour supprimer la avec l'ID 2 :
+
+
+    DELETE /api/visits/2
+
+Ceci conclut la documentation de l'API pour la gestion des visites. N'hésitez pas à explorer les différentes fonctionnalités pour interagir avec les données via l'API.
+
+Liste de tout les endpoints
+
+        pour accéder aux entreprises :
+        GET /api/companies : Obtenir la liste des entreprises.
+        GET /api/companies/{id} : Obtenir les détails d'une entreprise par son ID.
+        POST /api/companies : Créer une nouvelle entreprise.
+        PUT /api/companies/{id} : Mettre à jour les informations d'une entreprise.
+        DELETE /api/companies/{id} : Supprimer une entreprise.
+
+        pour accéder aux statuts :
+        GET /api/status : Obtenir la liste des statuts.
+        GET /api/status/{id} : Obtenir les détails d'un status par son ID.
+        POST /api/status : Créer un nouveau statut de visite.
+        PUT /api/status/{id} : Mettre à jour les informations d'un statut.
+        DELETE /api/status/{id} : Supprimer un status.
+
+        pour accéder aux visites :
+        GET /api/visits : Obtenir la liste des visits.
+        GET /api/visits/{id} : Obtenir les détails d'une visites par son ID.
+        POST /api/visits : Créer une nouvelle  visite.
+        PUT /api/visits/{id} : Mettre à jour les informations d'une visite.
+        DELETE /api/visits/{id} : Supprimer une visite.
+
+        pour accéder aux visiteurs :
+        GET /api/visitors : Obtenir la liste des visiteurs.
+        GET /api/visitors/{id} : Obtenir les détails d'un visiteurs par son ID.
+        POST /api/visitors : Créer un nouveau  visiteur.
+        PUT /api/visitors/{id} : Mettre à jour les informations d'un visiteur.
+        DELETE /api/visitors/{id} : Supprimer une visiteur.
