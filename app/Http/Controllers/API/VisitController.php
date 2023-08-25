@@ -15,7 +15,11 @@ class VisitController extends Controller
      */
     public function index()
     {
-        //
+        $visits = Visit::all();
+        return response()->json([
+            'status' => 'Success',
+            'data' => $visits
+        ]);
     }
 
     /**
@@ -26,7 +30,22 @@ class VisitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'visit_start'=>'required', // Format "Année-Mois-Jour Heure:Minute:Seconde"',
+            'visit_end'=>'required',
+            'visit_purpose' => 'required',
+            'visitor_id' => 'required',
+            'status_id' => 'required'
+        ]);
+        $visit = Visit::create([
+            'visit_start' => $request->visit_start,
+            'visit_end' => $request->visit_end,
+            'visit_purpose' => $request->visit_purpose,
+            'visit_comment'=> $request->visit_comment,
+            'visitor_id' => $request->visitor_id,
+            'status_id' => $request->status_id,
+        ]);
+        return response()->json(['status' => 'Success', 'data' => $visit]);
     }
 
     /**
@@ -37,7 +56,7 @@ class VisitController extends Controller
      */
     public function show(Visit $visit)
     {
-        //
+        return response()->json($visit);
     }
 
     /**
@@ -49,7 +68,22 @@ class VisitController extends Controller
      */
     public function update(Request $request, Visit $visit)
     {
-        //
+        $this->validate($request , [
+            'visit_start'=>'required', 
+            'visit_end'=>'required',
+            'visit_purpose' => 'required',
+            'visitor_id' => 'required',
+            'status_id' => 'required'
+        ]);
+        $visit->update([
+            'visit_start' => $request->visit_start,
+            'visit_end' => $request->visit_end,
+            'visit_purpose' => $request->visit_purpose,
+            'visit_comment'=> $request->visit_comment,
+            'visitor_id' => $request->visitor_id,
+            'status_id' => $request->status_id,
+        ]);
+        return response()->json(['status' => 'Success', 'data' => $visit]);
     }
 
     /**
@@ -60,6 +94,7 @@ class VisitController extends Controller
      */
     public function destroy(Visit $visit)
     {
-        //
+        $visit->delete();
+        return response()->json(['status' => 'Supprimer avec succès']);
     }
 }

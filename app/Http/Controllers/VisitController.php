@@ -37,7 +37,7 @@ class VisitController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'visit_start'=>'required', // Format "Année-Mois-Jour Heure:Minute:Seconde"',
+            'visit_start'=>'required', 
             'visit_end'=>'required',
             'visit_purpose' => 'required',
             'visitor_id' => 'required',
