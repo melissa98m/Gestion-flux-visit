@@ -15,7 +15,11 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        $companies = Company::all();
+        return response()->json([
+            'status' => 'Success',
+            'data' => $companies
+        ]);
     }
 
     /**
@@ -26,7 +30,19 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'company_name'=>'required',
+            'company_address' => 'required',
+            'company_phone' => 'required|regex:/^[0-9\s\-\+\(\)]{10,}$/', // ajout d'un regex pour sécurisé 
+            'company_email' => 'required|unique:companies|max:100', // ajout de validateurs pour renforcer la sécurité et éviter les doublon d' adresses mail
+        ]);
+        $company = Company::create([
+            'company_name' => $request->company_name,
+            'company_address' => $request->company_address,
+            'company_phone' => $request->company_phone,
+            'company_email' => $request->company_email
+        ]);
+        return response()->json(['status' => 'Success', 'data' => $company]);
     }
 
     /**
@@ -37,7 +53,7 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        //
+        return response()->json($company);
     }
 
     /**
@@ -49,7 +65,19 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //
+        $this->validate($request , [
+            'company_name'=>'required|max:50',
+            'company_address' => 'required',
+            'company_phone' => 'required|regex:/^[0-9\s\-\+\(\)]{10,}$/' ,
+            'company_email' => 'required|unique:companies|max:100',
+        ]);
+        $company->update([
+            'company_name' => $request->company_name,
+            'company_address' => $request->company_address,
+            'company_phone' => $request->company_phone,
+            'company_email' => $request->company_email
+        ]);
+        return response()->json(['status' => 'Success', 'data' => $company]);
     }
 
     /**
@@ -60,6 +88,7 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        $company->delete();
+        return response()->json(['status' => 'Supprimer avec succès']);
     }
 }

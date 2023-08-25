@@ -11,7 +11,10 @@
                 <div class="p-6 text-gray-900">
                     {{ __("Vous êtez connecté!") }}
                 </div>
-                <a href="{{ url('/visits')}}">Gerer les visites</a>
+                <a class="btn btn-info" href="{{ url('/visits')}}">Gerer les visites</a> <br/>
+                <a href="{{ url('/visitors')}}">Gerer les visteurs</a><br/>
+                <a href="{{ url('/status')}}">Gerer les statuts</a><br/>
+                <a href="{{ url('/companies')}}">Gerer les entreprise</a><br/>
             </div>
         </div>
     </div>
