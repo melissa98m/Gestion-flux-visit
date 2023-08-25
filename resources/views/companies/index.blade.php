@@ -31,7 +31,7 @@
                                         <td>{{$company->company_name}}</td>
                                         <td>
                                             <a href="{{ route('companies.edit', $company->id) }}" class="btn btn-primary btn-sm">Editer</a>
-
+                                            <a href="{{ route('companies.show', $company->id) }}" class="btn btn-secondary btn-sm">Détails</a>
                                             <form action="{{ route('companies.destroy',$company->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
