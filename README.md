@@ -47,8 +47,96 @@ Fonctionnalités
     CRUD complet pour la gestion des statuts des visites :
         Création, lecture, mise à jour et suppression.
 
-    L'authentification des utilisateurs pour la gestion du CRUD est gérée par Laravel Breeze, qui fournit un système d'authentification simple et minimaliste. Vous pouvez vous connecter, vous inscrire et vous déconnecter pour accéder aux fonctionnalités CRUD.
-        
+L'authentification des utilisateurs pour la gestion du CRUD est gérée par Laravel Breeze, qui fournit un système d'authentification simple et minimaliste. Vous pouvez vous connecter, vous inscrire et vous déconnecter pour accéder aux fonctionnalités CRUD.
+
+Documentation de l'API
+
+Cette API permet d'accéder aux informations des entreprises , visites, visiteurs et statuts de visite en utilisant des points d'extrémité RESTful. Voici comment vous pouvez interagir avec l'API :
+Obtenir la liste des visites
+
+    GET /api/visits
+
+Cette requête renverra la liste de toutes les visits enregistrées dans le système, avec leurs informations associées. Voici un exemple de réponse JSON :
+
+    json
+    
+    "status": "Success",
+        "data": [
+            {
+                "id": 1,
+                "visit_start": "2023-08-25 14:23:44",
+                "visit_end": "2023-08-26 14:23:44",
+                "visit_purpose": "test",
+                "visit_comment": "",
+                "visitor_id": 1,
+                "status_id": 1,
+                "created_at": null,
+                "updated_at": null
+            }
+        ]
+
+Obtenir les détails d'une visits
+
+
+    GET /api/visits/{id}
+
+Cette requête renverra les détails de la visite avec l'ID spécifié dans le chemin. Par exemple, pour obtenir les détails de la visite avec l'ID 1 :
+
+
+    GET /api/visits/1
+
+Créer une nouvelle visite
+
+    POST /api/visits
+
+Pour créer une nouvelle visite, envoyez une requête POST avec les données de la visite au format JSON dans le corps de la requête. Voici un exemple de corps de requête :
+
+    json
+    
+    {
+        "visit_start": "2023-08-25 14:23:44",
+        "visit_end": "2023-08-26 14:23:44",
+        "visit_purpose": "test",
+        "visit_comment": "",
+        "visitor_id": 1,
+        "status_id": 1,
+    }
+
+Mettre à jour les informations d'une visite
+
+
+    PUT /api/visits/{id}
+
+Pour mettre à jour les informations d'une visite, envoyez une requête PUT avec les données mises à jour au format JSON dans le corps de la requête. Par exemple, pour mettre à jour la visite avec l'ID 1 :
+
+
+    PUT /api/visits/1
+
+    json
+    
+    {
+            "visit_start": "2023-08-25 14:23:44",
+            "visit_end": "2023-08-26 14:23:44",
+            "visit_purpose": "Modifier",
+            "visit_comment": "",
+            "visitor_id": 1,
+            "status_id": 1,
+    }
+
+Supprimer une visite
+
+
+
+    DELETE /api/visits/{id}
+
+Pour supprimer une visite, envoyez une requête DELETE avec l'ID de la viste à supprimer dans le chemin. Par exemple, pour supprimer la avec l'ID 2 :
+
+
+    DELETE /api/visits/2
+
+Ceci conclut la documentation de l'API pour la gestion des visites. N'hésitez pas à explorer les différentes fonctionnalités pour interagir avec les données via l'API.
+
+Liste de tout les endpoints
     API: pour accéder aux entreprises :
         GET /api/companies : Obtenir la liste des entreprises.
         GET /api/companies/{id} : Obtenir les détails d'une entreprise par son ID.
