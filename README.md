@@ -1,66 +1,77 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Projet Laravel CRUD avec API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Ce projet Laravel est conçu pour démontrer la mise en place d'un CRUD (Create, Read, Update, Delete) ainsi que la création d'une API pour interagir avec les données. Le projet utilise le framework Laravel pour la création d'une application web avec des fonctionnalités CRUD et une API pour accéder à ces fonctionnalités.
+Installation
 
-## About Laravel
+    Cloner le dépôt vers votre machine locale :
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+bash
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+git clone "https://github.com/melissa98m/Gestion-fux-visit"
+cd Gestion-fux-visit
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+    Installer les dépendances du projet via Composer :
 
-## Learning Laravel
+bash
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+composer install
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+    Copier le fichier .env.example en .env et configurer votre base de données.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+bash
 
-## Laravel Sponsors
+cp .env.example .env
+php artisan key:generate
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+    Exécuter les migrations pour créer les tables de base de données :
 
-### Premium Partners
+bash
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+php artisan migrate
 
-## Contributing
+    Exécuter le serveur de développement :
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+bash
 
-## Code of Conduct
+php artisan serve
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Fonctionnalités
 
-## Security Vulnerabilities
+    CRUD complet pour la gestion des visites :
+        Création, lecture, mise à jour et suppression d'entreprises.
+    
+    CRUD complet pour la gestion des entreprises et visiteurs :
+        Création, lecture, mise à jour et suppression.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    CRUD complet pour la gestion des statuts des visites :
+        Création, lecture, mise à jour et suppression.
 
-## License
+    L'authentification des utilisateurs pour la gestion du CRUD est gérée par Laravel Breeze, qui fournit un système d'authentification simple et minimaliste. Vous pouvez vous connecter, vous inscrire et vous déconnecter pour accéder aux fonctionnalités CRUD.
+        
+    API: pour accéder aux entreprises :
+        GET /api/companies : Obtenir la liste des entreprises.
+        GET /api/companies/{id} : Obtenir les détails d'une entreprise par son ID.
+        POST /api/companies : Créer une nouvelle entreprise.
+        PUT /api/companies/{id} : Mettre à jour les informations d'une entreprise.
+        DELETE /api/companies/{id} : Supprimer une entreprise.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+        pour accéder aux statuts :
+        GET /api/status : Obtenir la liste des statuts.
+        GET /api/status/{id} : Obtenir les détails d'un status par son ID.
+        POST /api/status : Créer un nouveau statut de visite.
+        PUT /api/status/{id} : Mettre à jour les informations d'un statut.
+        DELETE /api/status/{id} : Supprimer un status.
+
+        pour accéder aux visites :
+        GET /api/visits : Obtenir la liste des visits.
+        GET /api/visits/{id} : Obtenir les détails d'une visites par son ID.
+        POST /api/visits : Créer une nouvelle  visite.
+        PUT /api/visits/{id} : Mettre à jour les informations d'une visite.
+        DELETE /api/visits/{id} : Supprimer une visite.
+
+        pour accéder aux visiteurs :
+        GET /api/visitors : Obtenir la liste des visiteurs.
+        GET /api/visitors/{id} : Obtenir les détails d'un visiteurs par son ID.
+        POST /api/visitors : Créer un nouveau  visiteur.
+        PUT /api/visitors/{id} : Mettre à jour les informations d'un visiteur.
+        DELETE /api/visitors/{id} : Supprimer une visiteur.
