@@ -18,18 +18,16 @@ class CompanyController extends Controller
         $companies = Company::all();
         return view('companies.index', compact('companies'));
     }
-
+    public function create()
+    {
+        return view('companies.create');
+    }
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('companies.create');
-    }
-
     public function store(Request $request)
     {
         $request->validate([
