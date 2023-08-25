@@ -13,7 +13,7 @@ class Visit extends Model
 
     public function visitor()
     {
-        return $this->BelongsTo(Vistor::class,'visitor_id');
+        return $this->BelongsTo(Visitor::class,'visitor_id');
     }
     public function status()
     {

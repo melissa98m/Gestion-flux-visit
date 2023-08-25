@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\VisitController;
 use App\Http\Controllers\VisitorController;
 use Faker\Provider\de_CH\Company;
 use Illuminate\Support\Facades\Route;
@@ -38,4 +39,6 @@ Route::resource('companies', CompanyController::class)->middleware(['auth', 'ver
 Route::resource('status', StatusController::class)->middleware(['auth', 'verified']);
 //routes pour les visiteurs
 Route::resource('visitors', VisitorController::class)->middleware(['auth', 'verified']);
+//routes pour les visits
+Route::resource('visits', VisitController::class)->middleware(['auth', 'verified']);
 require __DIR__.'/auth.php';
