@@ -4,11 +4,12 @@ Ce projet Laravel est conçu pour démontrer la mise en place d'un CRUD (Create,
 Installation
 
     Cloner le dépôt vers votre machine locale :
+    git clone "https://github.com/melissa98m/Gestion-fux-visit"
+    cd Gestion-fux-visit
 
 
 
-git clone "https://github.com/melissa98m/Gestion-fux-visit"
-cd Gestion-fux-visit
+
 
     Installer les dépendances du projet via Composer :
 
