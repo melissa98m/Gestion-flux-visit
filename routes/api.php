@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\CompanyController;
 use App\Http\Controllers\API\StatusController;
 use App\Http\Controllers\API\VisitController;
+use App\Http\Controllers\API\VisitorController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -41,5 +42,13 @@ Route::controller(VisitController::class)->group(function () {
     Route::post('visits', 'store');
     Route::patch('visits/{visit}', 'update');
     Route::delete('visits/{visit}', 'destroy');
+});
+
+Route::controller(VisitorController::class)->group(function () {
+    Route::get('visitors', 'index');
+    Route::get('visitors/{visitor}', 'show');
+    Route::post('visitors', 'store');
+    Route::patch('visitors/{visiort}', 'update');
+    Route::delete('visitors/{visitor}', 'destroy');
 });
 

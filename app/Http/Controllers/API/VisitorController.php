@@ -15,7 +15,11 @@ class VisitorController extends Controller
      */
     public function index()
     {
-        //
+        $visitors = Visitor::all();
+        return response()->json([
+            'status' => 'Success',
+            'data' => $visitors
+        ]);
     }
 
     /**
@@ -26,7 +30,23 @@ class VisitorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'visitor_firstname'=>'required|max:50',
+            'visitor_lastname'=>'required|max:50',
+            'visitor_address' => 'required',
+            'visitor_phone' => 'required|regex:/^[0-9\s\-\+\(\)]{10,}$/', // ajout d'un regex pour sécurisé 
+            'visitor_email' => 'required|unique:visitors|max:100', // ajout de validateurs pour renforcer la sécurité et éviter les doublon d' adresses mail
+            'company_id' => 'required'
+        ]);
+        $visitor = Visitor::create([
+            'visitor_firstname'=> $request->visitor_firstname,
+            'visitor_lastname'=> $request->visitor_lastname,
+            'visitor_address' => $request->visitor_address,
+            'visitor_phone' => $request->visitor_phone,
+            'visitor_email' => $request->visitor_email,
+            'company_id' => $request->company_id
+        ]);
+        return response()->json(['status' => 'Success', 'data' => $visitor]);
     }
 
     /**
@@ -37,7 +57,7 @@ class VisitorController extends Controller
      */
     public function show(Visitor $visitor)
     {
-        //
+        return response()->json($visitor);
     }
 
     /**
@@ -49,7 +69,23 @@ class VisitorController extends Controller
      */
     public function update(Request $request, Visitor $visitor)
     {
-        //
+        $this->validate($request , [
+            'visitor_firstname'=>'required|max:50',
+            'visitor_lastname'=>'required|max:50',
+            'visitor_address' => 'required',
+            'visitor_phone' => 'required|regex:/^[0-9\s\-\+\(\)]{10,}$/', // ajout d'un regex pour sécurisé 
+            'visitor_email' => 'required|unique:visitors|max:100', // ajout de validateurs pour renforcer la sécurité et éviter les doublon d' adresses mail
+            'company_id' => 'required'
+        ]);
+        $visitor->update([
+            'visitor_firstname'=> $request->visitor_firstname,
+            'visitor_lastname'=> $request->visitor_lastname,
+            'visitor_address' => $request->visitor_address,
+            'visitor_phone' => $request->visitor_phone,
+            'visitor_email' => $request->visitor_email,
+            'company_id' => $request->company_id
+        ]);
+        return response()->json(['status' => 'Success', 'data' => $visitor]);
     }
 
     /**
@@ -60,6 +96,7 @@ class VisitorController extends Controller
      */
     public function destroy(Visitor $visitor)
     {
-        //
+        $visitor->delete();
+        return response()->json(['status' => 'Supprimer avec succès']);
     }
 }
