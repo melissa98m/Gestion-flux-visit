@@ -137,7 +137,8 @@ Pour supprimer une visite, envoyez une requête DELETE avec l'ID de la viste à 
 Ceci conclut la documentation de l'API pour la gestion des visites. N'hésitez pas à explorer les différentes fonctionnalités pour interagir avec les données via l'API.
 
 Liste de tout les endpoints
-    API: pour accéder aux entreprises :
+
+        pour accéder aux entreprises :
         GET /api/companies : Obtenir la liste des entreprises.
         GET /api/companies/{id} : Obtenir les détails d'une entreprise par son ID.
         POST /api/companies : Créer une nouvelle entreprise.
