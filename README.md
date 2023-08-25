@@ -1,4 +1,4 @@
-Projet Laravel CRUD avec API
+Test gestion de flux visiteurs
 
 Ce projet Laravel est conçu pour démontrer la mise en place d'un CRUD (Create, Read, Update, Delete) ainsi que la création d'une API pour interagir avec les données. Le projet utilise le framework Laravel pour la création d'une application web avec des fonctionnalités CRUD et une API pour accéder à ces fonctionnalités.
 Installation
